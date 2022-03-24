@@ -19,9 +19,9 @@ MonoBehaviour:
     width: 1920
     height: 989
   m_ShowMode: 4
-  m_Title: Project
+  m_Title: Hierarchy
   m_RootView: {fileID: 6}
-  m_MinSize: {x: 875, y: 300}
+  m_MinSize: {x: 875, y: 421}
   m_MaxSize: {x: 10000, y: 10000}
   m_Maximized: 1
 --- !u!114 &2
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 39
+  controlID: 108
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -354,14 +354,14 @@ MonoBehaviour:
   m_LastFolders:
   - Assets
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: C:\Users\vini_\Desktop\etc\Unity\idk\My project
+  m_LastProjectPath: C:\Users\vini_\Desktop\etc\Unity\unity-isometric-project\isometric-stuff
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 54}
-    m_SelectedIDs: 3c600000
-    m_LastClickedID: 24636
-    m_ExpandedIDs: 00000000226000002460000026600000286000002a60000000ca9a3bffffff7f
+    m_SelectedIDs: 3e600000
+    m_LastClickedID: 24638
+    m_ExpandedIDs: 00000000226000002460000026600000286000002a6000002c60000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -389,7 +389,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000226000002460000026600000286000002a600000
+    m_ExpandedIDs: 00000000226000002460000026600000286000002a6000002c600000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -807,7 +807,7 @@ MonoBehaviour:
       floating: 0
       collapsed: 0
       displayed: 0
-      snapOffset: {x: 0, y: 0}
+      snapOffset: {x: 0, y: 25}
       snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: Scene View/Open Tile Palette
@@ -818,7 +818,7 @@ MonoBehaviour:
       floating: 0
       collapsed: 0
       displayed: 0
-      snapOffset: {x: 0, y: 0}
+      snapOffset: {x: 0, y: 25}
       snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: Scene View/Tilemap Focus
@@ -834,9 +834,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -0.8151476, y: -2.7146256, z: 0.557249}
+    m_Target: {x: -0.60548156, y: 2.701102, z: 0.69705373}
     speed: 2
-    m_Value: {x: -0.8151476, y: -2.7146256, z: 0.557249}
+    m_Value: {x: -0.60548156, y: 2.701102, z: 0.69705373}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -886,9 +886,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 4.162062
+    m_Target: 7.4446917
     speed: 2
-    m_Value: 4.162062
+    m_Value: 7.4446917
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -947,7 +947,7 @@ MonoBehaviour:
   m_ShowGizmos: 0
   m_TargetDisplay: 0
   m_ClearColor: {r: 0, g: 0, b: 0, a: 0}
-  m_TargetSize: {x: 1150, y: 526}
+  m_TargetSize: {x: 935, y: 526}
   m_TextureFilterMode: 0
   m_TextureHideFlags: 61
   m_RenderIMGUI: 1
@@ -961,14 +961,14 @@ MonoBehaviour:
   m_PlayFocused: 0
   m_Gizmos: 0
   m_Stats: 0
-  m_SelectedSizes: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+  m_SelectedSizes: 01000000000000000000000000000000000000000000000000000000000000000000000000000000
   m_ZoomArea:
     m_HRangeLocked: 0
     m_VRangeLocked: 0
     hZoomLockedByDefault: 0
     vZoomLockedByDefault: 0
-    m_HBaseRangeMin: -575
-    m_HBaseRangeMax: 575
+    m_HBaseRangeMin: -467.5
+    m_HBaseRangeMax: 467.5
     m_VBaseRangeMin: -263
     m_VBaseRangeMax: 263
     m_HAllowExceedBaseRangeMin: 1
@@ -990,18 +990,18 @@ MonoBehaviour:
       y: 21
       width: 1150
       height: 526
-    m_Scale: {x: 1.266503, y: 1.266503}
-    m_Translation: {x: 536.2388, y: 192.90973}
+    m_Scale: {x: 1.2599446, y: 1.2599446}
+    m_Translation: {x: 580.0241, y: 300.6346}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -423.40112
-      y: -152.31683
-      width: 908.0121
-      height: 415.31683
+      x: -460.35684
+      y: -238.6094
+      width: 912.7386
+      height: 417.4787
     m_MinimalGUI: 1
   m_defaultScale: 1
   m_LastWindowPixelSize: {x: 1150, y: 547}
