@@ -18,32 +18,49 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         Vector2 currentPos = playerRigidBody.position;
-        Vector3Int gridCurrPos = grid.WorldToCell((Vector3)playerRigidBody.position);
-        int roundedHorizontalInput, roundedVerticalInput;
-        Debug.Log(gridCurrPos);
+        float newPosX = currentPos.x;
+        float newPosY = currentPos.y;
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
-        Vector2 inputVector = new Vector2(horizontalInput,verticalInput);
-
-        if(horizontalInput>0){
-            roundedHorizontalInput = (int)Math.Ceiling(horizontalInput);
-        } else {
-            roundedHorizontalInput = (int)Math.Floor(horizontalInput);
-        }
-
-        if(verticalInput>0){
-            roundedVerticalInput = (int)Math.Ceiling(horizontalInput);
-        } else {
-            roundedVerticalInput = (int)Math.Floor(horizontalInput);
-        }
-        Vector3Int gridNewPos = gridCurrPos + new Vector3Int(roundedHorizontalInput, roundedVerticalInput, 0);
-
-        inputVector = Vector2.ClampMagnitude(inputVector, 1);
+        Vector2 inputVector = new Vector2(horizontalInput, verticalInput);
         float moveForce = inputVector.magnitude;
 
-        Vector2 movement = moveForce * (Vector2)grid.CellToWorld(gridNewPos) * moveSpeed;
-        Vector2 newPos = currentPos + movement * Time.fixedDeltaTime;
+        switch(DirectionToIndex(inputVector)){
+            case 0: //north
+                newPosY += moveForce * moveSpeed * Time.fixedDeltaTime;
+                break;
+            case 2: //west
+                newPosX -= moveForce * moveSpeed * Time.fixedDeltaTime;
+                break;
+            case 4: //south
+                newPosY -= moveForce * moveSpeed * Time.fixedDeltaTime;
+                break;
+            case 6: //east
+                newPosX += moveForce * moveSpeed * Time.fixedDeltaTime;
+                break;
+        }
+        //Debug.Log("X = " + newPosX + " Y = " + newPosY);
+        //Debug.Log(Time.fixedDeltaTime * moveForce * moveSpeed);
+        playerRigidBody.MovePosition(new Vector2(newPosX, newPosY));
+    }
 
-        playerRigidBody.MovePosition(newPos);
+    private int DirectionToIndex(Vector2 _direction)
+    {
+        Vector2 norDir = _direction.normalized;//MARKER return this vector with a magnitude of 1 and get the normalized to an index
+
+        float step = 360 / 8;//MARKER 45 one circle and 8 slices//Calcuate how many degrees one slice is 
+        float offset = step / 2;//MARKER 22.5//OFFSET help us easy to calcuate and get the correct index of the string array
+
+        float angle = Vector2.SignedAngle(Vector2.up, norDir);//MARKER returns the signed angle in degrees between A and B
+
+        angle += offset;//Help us easy to calcuate and get the correct index of the string array
+
+        if(angle < 0)//avoid the negative number 
+        {
+            angle += 360;
+        }
+
+        float stepCount = angle / step;
+        return Mathf.FloorToInt(stepCount);
     }
 }
