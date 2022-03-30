@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    private static readonly float SIN = 0.44721359f; //of 26.5650512 degrees
+    private static readonly float COS = 0.89442719f;
     private Rigidbody2D playerRigidBody;
     [SerializeField] private float moveSpeed = 1.0f;
     
@@ -16,8 +18,7 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         Vector2 currentPos = playerRigidBody.position;
-        float sin = 0.44721359f; //of 26.5650512 degrees
-        float cos = 0.89442719f;
+        
         float newPosX = currentPos.x;
         float newPosY = currentPos.y;
         float horizontalInput = Input.GetAxis("Horizontal");
@@ -31,29 +32,29 @@ public class PlayerMovement : MonoBehaviour
                 newPosY += moveForce * moveSpeed * Time.fixedDeltaTime;
                 break;
             case 1: //northwest
-                newPosY += moveForce * moveSpeed * Time.fixedDeltaTime * sin;
-                newPosX -= moveForce * moveSpeed * Time.fixedDeltaTime * cos;
+                newPosY += moveForce * moveSpeed * Time.fixedDeltaTime * SIN;
+                newPosX -= moveForce * moveSpeed * Time.fixedDeltaTime * COS;
                 break;
             case 2: //west
                 newPosX -= moveForce * moveSpeed * Time.fixedDeltaTime;
                 break;
             case 3: //southwest
-                newPosY -= moveForce * moveSpeed * Time.fixedDeltaTime * sin;
-                newPosX -= moveForce * moveSpeed * Time.fixedDeltaTime * cos;
+                newPosY -= moveForce * moveSpeed * Time.fixedDeltaTime * SIN;
+                newPosX -= moveForce * moveSpeed * Time.fixedDeltaTime * COS;
                 break;
             case 4: //south
                 newPosY -= moveForce * moveSpeed * Time.fixedDeltaTime;
                 break;
             case 5: //southeast
-                newPosY -= moveForce * moveSpeed * Time.fixedDeltaTime * sin;
-                newPosX += moveForce * moveSpeed * Time.fixedDeltaTime * cos;
+                newPosY -= moveForce * moveSpeed * Time.fixedDeltaTime * SIN;
+                newPosX += moveForce * moveSpeed * Time.fixedDeltaTime * COS;
                 break;
             case 6: //east
                 newPosX += moveForce * moveSpeed * Time.fixedDeltaTime;
                 break;
             case 7: //northeast
-                newPosY += moveForce * moveSpeed * Time.fixedDeltaTime * sin;
-                newPosX += moveForce * moveSpeed * Time.fixedDeltaTime * cos;
+                newPosY += moveForce * moveSpeed * Time.fixedDeltaTime * SIN;
+                newPosX += moveForce * moveSpeed * Time.fixedDeltaTime * COS;
                 break;
         }
         playerRigidBody.MovePosition(new Vector2(newPosX, newPosY));
