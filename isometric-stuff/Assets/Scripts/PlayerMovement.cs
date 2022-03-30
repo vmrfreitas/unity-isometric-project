@@ -18,6 +18,8 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         Vector2 currentPos = playerRigidBody.position;
+        float sin = 0.44721359f; //of 26.5650512 degrees
+        float cos = 0.89442719f;
         float newPosX = currentPos.x;
         float newPosY = currentPos.y;
         float horizontalInput = Input.GetAxis("Horizontal");
@@ -29,18 +31,32 @@ public class PlayerMovement : MonoBehaviour
             case 0: //north
                 newPosY += moveForce * moveSpeed * Time.fixedDeltaTime;
                 break;
+            case 1: //northwest
+                newPosY += moveForce * moveSpeed * Time.fixedDeltaTime * sin;
+                newPosX -= moveForce * moveSpeed * Time.fixedDeltaTime * cos;
+                break;
             case 2: //west
                 newPosX -= moveForce * moveSpeed * Time.fixedDeltaTime;
+                break;
+            case 3: //southwest
+                newPosY -= moveForce * moveSpeed * Time.fixedDeltaTime * sin;
+                newPosX -= moveForce * moveSpeed * Time.fixedDeltaTime * cos;
                 break;
             case 4: //south
                 newPosY -= moveForce * moveSpeed * Time.fixedDeltaTime;
                 break;
+            case 5: //southeast
+                newPosY -= moveForce * moveSpeed * Time.fixedDeltaTime * sin;
+                newPosX += moveForce * moveSpeed * Time.fixedDeltaTime * cos;
+                break;
             case 6: //east
                 newPosX += moveForce * moveSpeed * Time.fixedDeltaTime;
                 break;
+            case 7: //northeast
+                newPosY += moveForce * moveSpeed * Time.fixedDeltaTime * sin;
+                newPosX += moveForce * moveSpeed * Time.fixedDeltaTime * cos;
+                break;
         }
-        //Debug.Log("X = " + newPosX + " Y = " + newPosY);
-        //Debug.Log(Time.fixedDeltaTime * moveForce * moveSpeed);
         playerRigidBody.MovePosition(new Vector2(newPosX, newPosY));
     }
 
