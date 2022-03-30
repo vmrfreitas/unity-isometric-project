@@ -4,9 +4,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody2D playerRigidBody;
-    private float moveHorizontal, moveVertical;
     [SerializeField] private float moveSpeed = 1.0f;
-    [SerializeField] private Grid grid;
     
     // Start is called before the first frame update
     void Start()
@@ -25,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
         Vector2 inputVector = new Vector2(horizontalInput, verticalInput);
+        inputVector = Vector2.ClampMagnitude(inputVector, 1);
         float moveForce = inputVector.magnitude;
 
         switch(DirectionToIndex(inputVector)){
