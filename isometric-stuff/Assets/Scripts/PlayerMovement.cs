@@ -21,46 +21,48 @@ public class PlayerMovement : MonoBehaviour
         
         float newPosX = currentPos.x;
         float newPosY = currentPos.y;
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
+        float horizontalInput = Input.GetAxisRaw("Horizontal");
+        float verticalInput = Input.GetAxisRaw("Vertical");
         Vector2 inputVector = new Vector2(horizontalInput, verticalInput);
         inputVector = Vector2.ClampMagnitude(inputVector, 1);
-        float moveForce = inputVector.magnitude;
 
-        switch(DirectionToIndex(inputVector)){
-            case 0: //north
-                newPosY += moveForce * moveSpeed * Time.fixedDeltaTime;
-                break;
-            case 1: //northwest
-                newPosY += moveForce * moveSpeed * Time.fixedDeltaTime * SIN;
-                newPosX -= moveForce * moveSpeed * Time.fixedDeltaTime * COS;
-                break;
-            case 2: //west
-                newPosX -= moveForce * moveSpeed * Time.fixedDeltaTime;
-                break;
-            case 3: //southwest
-                newPosY -= moveForce * moveSpeed * Time.fixedDeltaTime * SIN;
-                newPosX -= moveForce * moveSpeed * Time.fixedDeltaTime * COS;
-                break;
-            case 4: //south
-                newPosY -= moveForce * moveSpeed * Time.fixedDeltaTime;
-                break;
-            case 5: //southeast
-                newPosY -= moveForce * moveSpeed * Time.fixedDeltaTime * SIN;
-                newPosX += moveForce * moveSpeed * Time.fixedDeltaTime * COS;
-                break;
-            case 6: //east
-                newPosX += moveForce * moveSpeed * Time.fixedDeltaTime;
-                break;
-            case 7: //northeast
-                newPosY += moveForce * moveSpeed * Time.fixedDeltaTime * SIN;
-                newPosX += moveForce * moveSpeed * Time.fixedDeltaTime * COS;
-                break;
+        if(inputVector.magnitude > 0.01) {
+            switch(DirectionToIndex(inputVector)){
+                case 0: //north
+                    newPosY += moveSpeed * Time.fixedDeltaTime;
+                    break;
+                case 1: //northwest
+                    newPosY += moveSpeed * Time.fixedDeltaTime * SIN;
+                    newPosX -= moveSpeed * Time.fixedDeltaTime * COS;
+                    break;
+                case 2: //west
+                    newPosX -= moveSpeed * Time.fixedDeltaTime;
+                    break;
+                case 3: //southwest
+                    newPosY -= moveSpeed * Time.fixedDeltaTime * SIN;
+                    newPosX -= moveSpeed * Time.fixedDeltaTime * COS;
+                    break;
+                case 4: //south
+                    newPosY -= moveSpeed * Time.fixedDeltaTime;
+                    break;
+                case 5: //southeast
+                    newPosY -= moveSpeed * Time.fixedDeltaTime * SIN;
+                    newPosX += moveSpeed * Time.fixedDeltaTime * COS;
+                    break;
+                case 6: //east
+                    newPosX += moveSpeed * Time.fixedDeltaTime;
+                    break;
+                case 7: //northeast
+                    newPosY += moveSpeed * Time.fixedDeltaTime * SIN;
+                    newPosX += moveSpeed * Time.fixedDeltaTime * COS;
+                    break;
+            }
         }
         playerRigidBody.MovePosition(new Vector2(newPosX, newPosY));
+        FindObjectOfType<PlayerAnimation>().SetDirection(inputVector);
     }
 
-    private int DirectionToIndex(Vector2 _direction)
+    public int DirectionToIndex(Vector2 _direction)
     {
         Vector2 norDir = _direction.normalized;//MARKER return this vector with a magnitude of 1 and get the normalized to an index
 
