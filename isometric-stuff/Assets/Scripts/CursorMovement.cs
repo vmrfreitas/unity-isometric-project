@@ -1,28 +1,24 @@
 using System;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
-public class PlayerMovement : MonoBehaviour
+public class CursorMovement : MonoBehaviour
 {
-    public bool battleMode;
-    private static readonly float SIN = 0.44721359f; //of 26.5650512 degrees
-    private static readonly float COS = 0.89442719f;
-    private Rigidbody2D playerRigidBody;
-    [SerializeField] private float moveSpeed = 1.0f;
+    private bool battleMode = false;
+    public Tilemap groundTilemap;
     
     // Start is called before the first frame update
     void Start()
     {
-        playerRigidBody = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(!battleMode){
-            Vector2 currentPos = playerRigidBody.position;
+        if(FindObjectOfType<PlayerMovement>().battleMode){
+            Vector3Int currentGridPos = groundTilemap.WorldToCell(transform.position);
             
-            float newPosX = currentPos.x;
-            float newPosY = currentPos.y;
+            Vector3Int newGridPos = currentGridPos;
             float horizontalInput = Input.GetAxisRaw("Horizontal");
             float verticalInput = Input.GetAxisRaw("Vertical");
             Vector2 inputVector = new Vector2(horizontalInput, verticalInput);
@@ -31,37 +27,36 @@ public class PlayerMovement : MonoBehaviour
             if(inputVector.magnitude > 0.01) {
                 switch(DirectionToIndex(inputVector)){
                     case 0: //north
-                        newPosY += moveSpeed * Time.fixedDeltaTime;
+                        newGridPos.y += 1;
+                        newGridPos.x += 1;
                         break;
                     case 1: //northwest
-                        newPosY += moveSpeed * Time.fixedDeltaTime * SIN;
-                        newPosX -= moveSpeed * Time.fixedDeltaTime * COS;
+                        newGridPos.y += 1;
                         break;
                     case 2: //west
-                        newPosX -= moveSpeed * Time.fixedDeltaTime;
+                        newGridPos.x -= 1;
+                        newGridPos.y += 1;
                         break;
                     case 3: //southwest
-                        newPosY -= moveSpeed * Time.fixedDeltaTime * SIN;
-                        newPosX -= moveSpeed * Time.fixedDeltaTime * COS;
+                        newGridPos.x -= 1;
                         break;
                     case 4: //south
-                        newPosY -= moveSpeed * Time.fixedDeltaTime;
+                        newGridPos.x -= 1;
+                        newGridPos.y -= 1;
                         break;
                     case 5: //southeast
-                        newPosY -= moveSpeed * Time.fixedDeltaTime * SIN;
-                        newPosX += moveSpeed * Time.fixedDeltaTime * COS;
+                        newGridPos.y -= 1;
                         break;
                     case 6: //east
-                        newPosX += moveSpeed * Time.fixedDeltaTime;
+                        newGridPos.x += 1;
+                        newGridPos.y -= 1;
                         break;
                     case 7: //northeast
-                        newPosY += moveSpeed * Time.fixedDeltaTime * SIN;
-                        newPosX += moveSpeed * Time.fixedDeltaTime * COS;
+                        newGridPos.x += 1;
                         break;
                 }
             }
-            playerRigidBody.MovePosition(new Vector2(newPosX, newPosY));
-            FindObjectOfType<PlayerAnimation>().SetDirection(inputVector);
+            transform.position =  groundTilemap.CellToWorld(newGridPos);
         }
     }
 
@@ -83,5 +78,13 @@ public class PlayerMovement : MonoBehaviour
 
         float stepCount = angle / step;
         return Mathf.FloorToInt(stepCount);
+    }
+
+    public bool getBattleMode(){
+        return this.battleMode;
+    }
+
+    public void setBattleMode(bool battleMode){
+        this.battleMode = battleMode;
     }
 }
