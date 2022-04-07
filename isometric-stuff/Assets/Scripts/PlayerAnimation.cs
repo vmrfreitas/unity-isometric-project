@@ -19,11 +19,11 @@ public class PlayerAnimation : MonoBehaviour
 
     //MARKER each direction will match with one string element
     //MARKER We used direction to determine their animation
-    public void SetDirection(Vector2 _direction)
+    public void SetDirection(int direction)
     {
         string[] directionArray;
 
-        if(_direction.magnitude < 0.01)//MARKER Character is static. And his velocity is close to zero
+        if (direction == 8)//MARKER Character is static. And his velocity is close to zero
         {
             directionArray = staticDirections;
         }
@@ -31,7 +31,7 @@ public class PlayerAnimation : MonoBehaviour
         {
             directionArray = runDirections;
 
-            lastDirection = FindObjectOfType<PlayerMovement>().DirectionToIndex(_direction);//MARKER Get the index of the slcie from the direction vector
+            lastDirection = direction;//MARKER Get the index of the slcie from the direction vector
         }
 
         anim.Play(directionArray[lastDirection]);

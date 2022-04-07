@@ -15,7 +15,7 @@ public class CursorMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(FindObjectOfType<PlayerMovement>().battleMode){
+        /*if(FindObjectOfType<PlayerMovement>().battleMode){
             Vector3Int currentGridPos = groundTilemap.WorldToCell(transform.position);
             
             Vector3Int newGridPos = currentGridPos;
@@ -57,7 +57,7 @@ public class CursorMovement : MonoBehaviour
                 }
             }
             transform.position =  groundTilemap.CellToWorld(newGridPos);
-        }
+        }*/
     }
 
     public int DirectionToIndex(Vector2 _direction)
