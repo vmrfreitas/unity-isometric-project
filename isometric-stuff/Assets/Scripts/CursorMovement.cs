@@ -22,47 +22,60 @@ public class CursorMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        Vector3Int currentGridPos = grid.WorldToCell(transform.position);
+        /*Vector3Int currentGridPos = grid.WorldToCell(transform.position);
 
         int direction = playerMov.DirectionToIndex(moveVal);
         switch (direction)
         {
             case 0: //north
                 currentGridPos.y += 1;
-                currentGridPos.x += 1;
                 break;
-            case 1: //northwest
-                currentGridPos.y += 1;
-                break;
-            case 2: //west
-                currentGridPos.y += 1;
+           // case 1: //northwest
+            //    currentGridPos.y += 1;
+            //    break;
+            case 1: //west
                 currentGridPos.x -= 1;
                 break;
-            case 3: //southwest
-                currentGridPos.x -= 1;
-                break;
-            case 4: //south
-                currentGridPos.y -= 1;
-                currentGridPos.x -= 1;
-                break;
-            case 5: //southeast
+            //case 3: //southwest
+            //    currentGridPos.x -= 1;
+            //    break;
+            case 2: //south
                 currentGridPos.y -= 1;
                 break;
-            case 6: //east
-                currentGridPos.y -= 1;
+            //case 5: //southeast
+            //    currentGridPos.y -= 1;
+             //   break;
+            case 3: //east
                 currentGridPos.x += 1;
                 break;
-            case 7: //northeast
-                currentGridPos.x += 1;
-                break;
+            //case 7: //northeast
+            //    currentGridPos.x += 1;
+             //   break;
         }
 
-        transform.position = grid.CellToWorld(currentGridPos);
+        transform.position = grid.CellToWorld(currentGridPos);*/
 
     }
 
-    void OnMovement(InputValue value)
+    void OnCursorMovement(InputValue value)
     {
+        Vector3Int currentGridPos = grid.WorldToCell(transform.position);
         moveVal = value.Get<Vector2>();
+        currentGridPos.x += (int)moveVal.y;
+        currentGridPos.y -= (int)moveVal.x;
+        transform.position = grid.CellToWorld(currentGridPos);
+        Debug.Log(moveVal);
+    }
+
+    public int DirectionToIndex(Vector2 _direction)
+    {
+        return _direction switch
+        {
+            Vector2 v when v.Equals(Vector2.up) => 0,
+            Vector2 v when v.Equals(Vector2.left) => 1,
+            Vector2 v when v.Equals(Vector2.down) => 2,
+            Vector2 v when v.Equals(Vector2.right) => 3,
+            _ => 4,
+        };
     }
 }

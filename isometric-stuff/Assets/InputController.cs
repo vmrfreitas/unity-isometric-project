@@ -10,7 +10,7 @@ public class InputController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        BattleMode = false;
+        BattleMode = true;
     }
 
     // Update is called once per frame

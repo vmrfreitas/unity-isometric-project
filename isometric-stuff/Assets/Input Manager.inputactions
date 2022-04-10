@@ -188,26 +188,180 @@
             "id": "9e825fed-ba7e-457a-83ef-4ddb1fd9e99e",
             "actions": [
                 {
-                    "name": "New action",
-                    "type": "Button",
-                    "id": "7452c2e9-3642-4839-8274-98e2a2f8f51d",
-                    "expectedControlType": "Button",
+                    "name": "CursorMovement",
+                    "type": "Value",
+                    "id": "70a0116f-e852-43fe-935d-cb5343ffbd4d",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
                 {
-                    "name": "",
-                    "id": "e3fdb3f0-b264-49bd-8d60-bedeb5e3822b",
-                    "path": "",
+                    "name": "CursorMovement Keyboard",
+                    "id": "f37c2f7e-8708-407b-a5ad-c5f23e8dbb79",
+                    "path": "2DVector(mode=1)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CursorMovement",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "62a20160-ee1d-46f2-8231-83d594b2070b",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard and (mouse)",
+                    "action": "CursorMovement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "40c912fa-5ad6-4048-8385-cea0f8459e0d",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard and (mouse)",
+                    "action": "CursorMovement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "787dca53-0868-4037-93a6-0d5f4356ab84",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard and (mouse)",
+                    "action": "CursorMovement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "04ed0d26-8979-4ffd-81ce-034e80051ac8",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard and (mouse)",
+                    "action": "CursorMovement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "CursorMovement Stick",
+                    "id": "bcc75d8f-3a7d-4c28-bf79-e3ec6b75dc7c",
+                    "path": "2DVector(mode=1)",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CursorMovement",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "0160ab74-cc40-46f9-813e-a9da7cdd3c52",
+                    "path": "<Gamepad>/leftStick/up",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "New action",
+                    "action": "CursorMovement",
                     "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "1af6d0eb-3b13-431b-b3de-7fae60725e48",
+                    "path": "<Gamepad>/leftStick/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "CursorMovement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "1691905f-068b-4377-bcdd-76915405150f",
+                    "path": "<Gamepad>/leftStick/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "CursorMovement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "9c1e0ab7-58e2-4371-9f37-cf2ef8e53b43",
+                    "path": "<Gamepad>/leftStick/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "CursorMovement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "CursorMovement Dpad",
+                    "id": "f09b2ee9-0401-400b-a6bd-ab47c4967967",
+                    "path": "2DVector(mode=1)",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CursorMovement",
+                    "isComposite": true,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "b650a967-ed01-4d23-98b3-3ede9b02e212",
+                    "path": "<Gamepad>/dpad/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "CursorMovement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "67ff72fc-86a9-4399-90b8-8a0a74a9e486",
+                    "path": "<Gamepad>/dpad/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "CursorMovement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "0e1ea2d8-b276-46fe-8f26-7a24fe290952",
+                    "path": "<Gamepad>/dpad/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "CursorMovement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "e33ccbda-9d6d-4fe3-864a-ec778c9d82c9",
+                    "path": "<Gamepad>/dpad/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "CursorMovement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         }
