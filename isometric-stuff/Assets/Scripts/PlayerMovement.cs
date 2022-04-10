@@ -4,7 +4,6 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public bool battleMode;
     private static readonly float SIN = 0.44721359f; //of 26.5650512 degrees
     private static readonly float COS = 0.89442719f;
     private Rigidbody2D playerRigidBody;
@@ -20,48 +19,47 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (!battleMode)
+
+        Vector2 currentPos = playerRigidBody.position;
+
+        float newPosX = currentPos.x;
+        float newPosY = currentPos.y;
+        int direction = DirectionToIndex(moveVal);
+        switch (direction)
         {
-            Vector2 currentPos = playerRigidBody.position;
-
-            float newPosX = currentPos.x;
-            float newPosY = currentPos.y;
-            int direction = DirectionToIndex(moveVal);
-            switch (direction)
-            {
-                case 0: //north
-                    newPosY += moveSpeed * Time.fixedDeltaTime;
-                    break;
-                case 1: //northwest
-                    newPosY += moveSpeed * Time.fixedDeltaTime * SIN;
-                    newPosX -= moveSpeed * Time.fixedDeltaTime * COS;
-                    break;
-                case 2: //west
-                    newPosX -= moveSpeed * Time.fixedDeltaTime;
-                    break;
-                case 3: //southwest
-                    newPosY -= moveSpeed * Time.fixedDeltaTime * SIN;
-                    newPosX -= moveSpeed * Time.fixedDeltaTime * COS;
-                    break;
-                case 4: //south
-                    newPosY -= moveSpeed * Time.fixedDeltaTime;
-                    break;
-                case 5: //southeast
-                    newPosY -= moveSpeed * Time.fixedDeltaTime * SIN;
-                    newPosX += moveSpeed * Time.fixedDeltaTime * COS;
-                    break;
-                case 6: //east
-                    newPosX += moveSpeed * Time.fixedDeltaTime;
-                    break;
-                case 7: //northeast
-                    newPosY += moveSpeed * Time.fixedDeltaTime * SIN;
-                    newPosX += moveSpeed * Time.fixedDeltaTime * COS;
-                    break;
-            }
-
-            playerRigidBody.MovePosition(new Vector2(newPosX, newPosY));
-            FindObjectOfType<PlayerAnimation>().SetDirection(direction);
+            case 0: //north
+                newPosY += moveSpeed * Time.fixedDeltaTime;
+                break;
+            case 1: //northwest
+                newPosY += moveSpeed * Time.fixedDeltaTime * SIN;
+                newPosX -= moveSpeed * Time.fixedDeltaTime * COS;
+                break;
+            case 2: //west
+                newPosX -= moveSpeed * Time.fixedDeltaTime;
+                break;
+            case 3: //southwest
+                newPosY -= moveSpeed * Time.fixedDeltaTime * SIN;
+                newPosX -= moveSpeed * Time.fixedDeltaTime * COS;
+                break;
+            case 4: //south
+                newPosY -= moveSpeed * Time.fixedDeltaTime;
+                break;
+            case 5: //southeast
+                newPosY -= moveSpeed * Time.fixedDeltaTime * SIN;
+                newPosX += moveSpeed * Time.fixedDeltaTime * COS;
+                break;
+            case 6: //east
+                newPosX += moveSpeed * Time.fixedDeltaTime;
+                break;
+            case 7: //northeast
+                newPosY += moveSpeed * Time.fixedDeltaTime * SIN;
+                newPosX += moveSpeed * Time.fixedDeltaTime * COS;
+                break;
         }
+
+        playerRigidBody.MovePosition(new Vector2(newPosX, newPosY));
+        FindObjectOfType<PlayerAnimation>().SetDirection(direction);
+
     }
 
     void OnMovement(InputValue value)

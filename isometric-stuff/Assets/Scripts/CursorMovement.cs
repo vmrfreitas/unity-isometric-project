@@ -1,90 +1,68 @@
 using System;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.InputSystem;
 
 public class CursorMovement : MonoBehaviour
 {
-    private bool battleMode = false;
-    public Tilemap groundTilemap;
-    
+    private PlayerMovement playerMov;
+    public Vector2 moveVal;
+    public Grid grid;
+    private GameObject character;
+    //public Tilemap groundTilemap;
+
     // Start is called before the first frame update
     void Start()
     {
+        character = GameObject.Find("character");
+        playerMov = character.GetComponent<PlayerMovement>();
+        //transform.position = groundTilemap.GetCellCenterLocal(groundTilemap.WorldToCell(GameObject.Find("character").transform.position));
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        /*if(FindObjectOfType<PlayerMovement>().battleMode){
-            Vector3Int currentGridPos = groundTilemap.WorldToCell(transform.position);
-            
-            Vector3Int newGridPos = currentGridPos;
-            float horizontalInput = Input.GetAxisRaw("Horizontal");
-            float verticalInput = Input.GetAxisRaw("Vertical");
-            Vector2 inputVector = new Vector2(horizontalInput, verticalInput);
-            inputVector = Vector2.ClampMagnitude(inputVector, 1);
+        Vector3Int currentGridPos = grid.WorldToCell(transform.position);
 
-            if(inputVector.magnitude > 0.01) {
-                switch(DirectionToIndex(inputVector)){
-                    case 0: //north
-                        newGridPos.y += 1;
-                        newGridPos.x += 1;
-                        break;
-                    case 1: //northwest
-                        newGridPos.y += 1;
-                        break;
-                    case 2: //west
-                        newGridPos.x -= 1;
-                        newGridPos.y += 1;
-                        break;
-                    case 3: //southwest
-                        newGridPos.x -= 1;
-                        break;
-                    case 4: //south
-                        newGridPos.x -= 1;
-                        newGridPos.y -= 1;
-                        break;
-                    case 5: //southeast
-                        newGridPos.y -= 1;
-                        break;
-                    case 6: //east
-                        newGridPos.x += 1;
-                        newGridPos.y -= 1;
-                        break;
-                    case 7: //northeast
-                        newGridPos.x += 1;
-                        break;
-                }
-            }
-            transform.position =  groundTilemap.CellToWorld(newGridPos);
-        }*/
-    }
-
-    public int DirectionToIndex(Vector2 _direction)
-    {
-        Vector2 norDir = _direction.normalized;//MARKER return this vector with a magnitude of 1 and get the normalized to an index
-
-        float step = 360 / 8;//MARKER 45 one circle and 8 slices//Calcuate how many degrees one slice is 
-        float offset = step / 2;//MARKER 22.5//OFFSET help us easy to calcuate and get the correct index of the string array
-
-        float angle = Vector2.SignedAngle(Vector2.up, norDir);//MARKER returns the signed angle in degrees between A and B
-
-        angle += offset;//Help us easy to calcuate and get the correct index of the string array
-
-        if(angle < 0)//avoid the negative number 
+        int direction = playerMov.DirectionToIndex(moveVal);
+        switch (direction)
         {
-            angle += 360;
+            case 0: //north
+                currentGridPos.y += 1;
+                currentGridPos.x += 1;
+                break;
+            case 1: //northwest
+                currentGridPos.y += 1;
+                break;
+            case 2: //west
+                currentGridPos.y += 1;
+                currentGridPos.x -= 1;
+                break;
+            case 3: //southwest
+                currentGridPos.x -= 1;
+                break;
+            case 4: //south
+                currentGridPos.y -= 1;
+                currentGridPos.x -= 1;
+                break;
+            case 5: //southeast
+                currentGridPos.y -= 1;
+                break;
+            case 6: //east
+                currentGridPos.y -= 1;
+                currentGridPos.x += 1;
+                break;
+            case 7: //northeast
+                currentGridPos.x += 1;
+                break;
         }
 
-        float stepCount = angle / step;
-        return Mathf.FloorToInt(stepCount);
+        transform.position = grid.CellToWorld(currentGridPos);
+
     }
 
-    public bool getBattleMode(){
-        return this.battleMode;
-    }
-
-    public void setBattleMode(bool battleMode){
-        this.battleMode = battleMode;
+    void OnMovement(InputValue value)
+    {
+        moveVal = value.Get<Vector2>();
     }
 }
