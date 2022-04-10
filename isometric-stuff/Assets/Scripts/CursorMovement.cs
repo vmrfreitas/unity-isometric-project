@@ -9,6 +9,7 @@ public class CursorMovement : MonoBehaviour
     public Vector2 moveVal;
     public Grid grid;
     private GameObject character;
+    private Vector2 oldMoveVal = new Vector2(0, 0);
     //public Tilemap groundTilemap;
 
     // Start is called before the first frame update
@@ -58,11 +59,16 @@ public class CursorMovement : MonoBehaviour
     }
 
     void OnCursorMovement(InputValue value)
-    {
+    {        
         Vector3Int currentGridPos = grid.WorldToCell(transform.position);
         moveVal = value.Get<Vector2>();
-        currentGridPos.x += (int)moveVal.y;
-        currentGridPos.y -= (int)moveVal.x;
+        if (moveVal.x != oldMoveVal.x){
+            currentGridPos.y -= (int)moveVal.x;
+        }
+        if (moveVal.y != oldMoveVal.y){
+            currentGridPos.x += (int)moveVal.y;
+        }
+        oldMoveVal = moveVal;
         transform.position = grid.CellToWorld(currentGridPos);
         Debug.Log(moveVal);
     }
