@@ -33,6 +33,5 @@ public class CursorMovement : MonoBehaviour
         }
         oldMoveVal = moveVal;
         transform.position = grid.CellToWorld(currentGridPos);
-        Debug.Log(moveVal);
     }
 }
