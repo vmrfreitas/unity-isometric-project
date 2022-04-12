@@ -8391,7 +8391,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1240275186}
-  smoothing: 1
   maxPosition: {x: 999, y: 999}
   minPosition: {x: -999, y: -999}
 --- !u!1 &762971030
@@ -9597,6 +9596,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveVal: {x: 0, y: 0}
+  grid: {fileID: 138951565}
   moveSpeed: 5
 --- !u!1 &1918614226
 GameObject:

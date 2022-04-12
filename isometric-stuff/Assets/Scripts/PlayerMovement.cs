@@ -8,12 +8,15 @@ public class PlayerMovement : MonoBehaviour
     private static readonly float COS = 0.89442719f;
     private Rigidbody2D playerRigidBody;
     public Vector2 moveVal;
+    public Grid grid;
     [SerializeField] private float moveSpeed = 1.0f;
 
     // Start is called before the first frame update
     void Start()
     {
         playerRigidBody = GetComponent<Rigidbody2D>();
+        //Vector3Int currentGridPos = grid.WorldToCell(transform.position);
+        //playerRigidBody.MovePosition(grid.CellToWorld(currentGridPos)); move player to grid center
     }
 
     // Update is called once per frame
