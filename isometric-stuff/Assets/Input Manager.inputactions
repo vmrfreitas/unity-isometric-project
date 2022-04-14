@@ -13,6 +13,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "SwitchBattleMode",
+                    "type": "Button",
+                    "id": "02a70b82-94c0-4519-878a-a62daa4dccde",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -180,6 +189,17 @@
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "f07e932d-7a6a-466f-9285-9094549998d8",
+                    "path": "<Keyboard>/b",
+                    "interactions": "Press(behavior=2)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SwitchBattleMode",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -195,6 +215,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "SelectTile",
+                    "type": "Button",
+                    "id": "1279aaee-01be-421f-8caa-fb1ca42ddcd2",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SwitchBattleMode",
+                    "type": "Button",
+                    "id": "c3d92f64-7d0c-4723-89aa-dc8f6384eab4",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -307,6 +345,28 @@
                     "action": "CursorMovement",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "b110f8c9-5256-4b5a-9b0a-9549cfea1e3a",
+                    "path": "<Keyboard>/a",
+                    "interactions": "Press(behavior=2)",
+                    "processors": "",
+                    "groups": "Keyboard and (mouse)",
+                    "action": "SelectTile",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "025b9afd-29d7-4d92-a47e-9be1f96f0bdc",
+                    "path": "<Keyboard>/b",
+                    "interactions": "Press(behavior=2)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SwitchBattleMode",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

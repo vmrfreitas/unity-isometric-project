@@ -35,4 +35,8 @@ public class InputController : MonoBehaviour
             }
         }
     }
+
+    void OnSwitchBattleMode() { //temporary
+        BattleMode = !BattleMode;
+    }
 }

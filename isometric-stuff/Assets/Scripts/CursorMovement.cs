@@ -8,6 +8,7 @@ public class CursorMovement : MonoBehaviour
     public Vector2 moveVal;
     public Grid grid;
     private Vector2 oldMoveVal = new Vector2(0, 0);
+    public PlayerMovement playerMovement;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +22,11 @@ public class CursorMovement : MonoBehaviour
 
     }
 
+    void OnSelectTile(){
+        //vai ter q abrir uma UI pra escolher oq fazer no tile
+        //por enquanto vo fazer o boneco andar até o tile e eras isso
+        playerMovement.MoveToTile(grid.WorldToCell(transform.position));
+    }
     void OnCursorMovement(InputValue value)
     {        
         Vector3Int currentGridPos = grid.WorldToCell(transform.position);
@@ -32,6 +38,6 @@ public class CursorMovement : MonoBehaviour
             currentGridPos.x += (int)moveVal.y;
         }
         oldMoveVal = moveVal;
-        transform.position = grid.CellToWorld(currentGridPos);
+        transform.position = grid.GetCellCenterWorld(currentGridPos);
     }
 }
