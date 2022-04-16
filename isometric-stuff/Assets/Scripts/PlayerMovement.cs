@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D playerRigidBody;
     public Vector2 moveVal;
     public Grid grid;
-    [SerializeField] private readonly float moveSpeed = 5.0f;
+    [SerializeField] private readonly float moveSpeed = 2.5f;
     private InputController temporaryReferenceToObject;
 
     // Start is called before the first frame update
@@ -72,7 +72,7 @@ public class PlayerMovement : MonoBehaviour
     public void MoveToTile(Vector3Int destinationTile)
     {
         Vector3 wrongCellCenter = grid.GetCellCenterWorld(destinationTile);
-        Vector3 rightCellCenter = new(wrongCellCenter.x, wrongCellCenter.y - 0.25f, destinationTile.z); //not sure about this
+        Vector3 rightCellCenter = new(wrongCellCenter.x, wrongCellCenter.y - 0.125f, destinationTile.z); //not sure about this
         playerRigidBody.MovePosition(rightCellCenter);
     }
 

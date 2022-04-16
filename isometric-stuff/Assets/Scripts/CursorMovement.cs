@@ -44,7 +44,7 @@ public class CursorMovement : MonoBehaviour
             if (changeHappened) {
                 oldMoveVal = moveVal;
                 Vector3 wrongCellCenter = grid.GetCellCenterWorld(currentGridPos);
-                Vector3 rightCellCenter = new(wrongCellCenter.x, wrongCellCenter.y - 0.25f, transform.position.z); //the z is temporary
+                Vector3 rightCellCenter = new(wrongCellCenter.x, wrongCellCenter.y - 0.125f, transform.position.z); //the z is temporary
                 transform.position = rightCellCenter;
             }
         }
