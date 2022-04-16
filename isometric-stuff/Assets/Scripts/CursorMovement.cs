@@ -7,7 +7,7 @@ public class CursorMovement : MonoBehaviour
 {
     public Vector2 moveVal;
     public Grid grid;
-    private Vector2 oldMoveVal = new Vector2(0, 0);
+    private Vector2 oldMoveVal = new(0, 0);
     public PlayerMovement playerMovement;
 
     // Start is called before the first frame update
@@ -29,15 +29,25 @@ public class CursorMovement : MonoBehaviour
     }
     void OnCursorMovement(InputValue value)
     {        
+        bool changeHappened = false;
         Vector3Int currentGridPos = grid.WorldToCell(transform.position);
         moveVal = value.Get<Vector2>();
-        if (moveVal.x != oldMoveVal.x){
-            currentGridPos.y -= (int)moveVal.x;
-        }
-        if (moveVal.y != oldMoveVal.y){
-            currentGridPos.x += (int)moveVal.y;
+        if(moveVal != Vector2.zero) {
+            if (moveVal.x != oldMoveVal.x){
+                currentGridPos.y -= (int)moveVal.x;
+                changeHappened = true;
+            }
+            if (moveVal.y != oldMoveVal.y){
+                currentGridPos.x += (int)moveVal.y;
+                changeHappened = true;
+            }
+            if (changeHappened) {
+                oldMoveVal = moveVal;
+                Vector3 wrongCellCenter = grid.GetCellCenterWorld(currentGridPos);
+                Vector3 rightCellCenter = new(wrongCellCenter.x, wrongCellCenter.y - 0.25f, transform.position.z); //the z is temporary
+                transform.position = rightCellCenter;
+            }
         }
         oldMoveVal = moveVal;
-        transform.position = grid.GetCellCenterWorld(currentGridPos);
     }
 }
