@@ -1,6 +1,8 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Tilemaps;
+
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -9,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D playerRigidBody;
     public Vector2 moveVal;
     public Grid grid;
+    public Tilemap tilemap;
     [SerializeField] private readonly float moveSpeed = 2.5f;
     private InputController temporaryReferenceToObject;
 
@@ -74,6 +77,7 @@ public class PlayerMovement : MonoBehaviour
         Vector3 wrongCellCenter = grid.GetCellCenterWorld(destinationTile);
         Vector3 rightCellCenter = new(wrongCellCenter.x, wrongCellCenter.y - 0.125f, destinationTile.z); //not sure about this
         playerRigidBody.MovePosition(rightCellCenter);
+        Debug.Log(tilemap.GetTile(destinationTile));
     }
 
     void OnMovement(InputValue value)
