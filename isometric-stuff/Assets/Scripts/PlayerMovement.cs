@@ -24,7 +24,19 @@ public class PlayerMovement : MonoBehaviour
         //playerRigidBody.MovePosition(grid.CellToWorld(currentGridPos)); move player to grid center
     }
 
-    // Update is called once per frame
+    public float FixZposition() {
+        Vector3Int tilepos = grid.WorldToCell(transform.position);
+        Vector3 tileworldpos = grid.CellToWorld(tilepos);
+        Vector3 relativePos = transform.position - tileworldpos;
+        float transformZ;
+        if (relativePos.y < .25){
+            transformZ = 1;
+        } else {
+            transformZ = 2;
+        }
+        return transformZ;
+    }
+
     void FixedUpdate()
     {
         if (!temporaryReferenceToObject.BattleMode)
@@ -66,10 +78,10 @@ public class PlayerMovement : MonoBehaviour
                     break;
             }
 
-            playerRigidBody.MovePosition(new Vector2(newPosX, newPosY));
+            //playerRigidBody.MovePosition(new Vector2(newPosX, newPosY));
+            transform.position = new Vector3(newPosX, newPosY, FixZposition());
             FindObjectOfType<PlayerAnimation>().SetDirection(direction);
         }
-
     }
 
     public void MoveToTile(Vector3Int destinationTile)

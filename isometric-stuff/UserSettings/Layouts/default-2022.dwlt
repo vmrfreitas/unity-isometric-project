@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 989
   m_ShowMode: 4
-  m_Title: Hierarchy
+  m_Title: Game
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 350}
   m_MaxSize: {x: 10000, y: 10000}
@@ -494,8 +494,8 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
-      m_LastClickedID: 0
+      m_SelectedIDs: b4620000
+      m_LastClickedID: 25268
       m_ExpandedIDs: fafaffff626200009e620000b4620000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
@@ -811,9 +811,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 0.31798273, y: 3.7470567, z: 0.034197133}
+    m_Target: {x: 0.0038449154, y: -1.765096, z: -0.050884742}
     speed: 2
-    m_Value: {x: 0.3019039, y: 3.741794, z: 0.034422133}
+    m_Value: {x: 0.0038449154, y: -1.765096, z: -0.050884742}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -863,9 +863,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 0.36798432
+    m_Target: 0.5476923
     speed: 2
-    m_Value: 0.3521381
+    m_Value: 0.5476923
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -995,21 +995,21 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Witch Sprites/Static
+    - Assets/Witch Sprites
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Witch Sprites/Static
+  - Assets/Witch Sprites
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\vini_\unity-isometric-project\isometric-stuff
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: ae7b0000
-    m_LastClickedID: 31662
+    m_SelectedIDs: 04640000
+    m_LastClickedID: 25604
     m_ExpandedIDs: 00000000c6630000c8630000ca630000cc630000ce630000d0630000d2630000d4630000d6630000d8630000da6300000464000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -1066,7 +1066,7 @@ MonoBehaviour:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 1
-    m_ExpandedInstanceIDs: c623000064c700000000000016600000e0620000287f0000ea620000
+    m_ExpandedInstanceIDs: c623000064c700000000000016600000e0620000287f0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
